@@ -1,12 +1,27 @@
 body {
-    background: green;
+    background: #1A1A1D;
 }
 
-.button {
+.center {
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 90%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+.button {
+    background-color: #6F2232;
+    color: white;
+    border: none;
+    width: 300px;
+    height: 80px;
+    font-size: 30px;
+}
+
+.button:hover {
+    background-color: #5E1121;
+    cursor: pointer;
+}
+

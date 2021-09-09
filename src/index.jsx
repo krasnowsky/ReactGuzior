@@ -10,13 +10,19 @@ class Canvas extends React.Component {
     }
 }
 
+ 
+
 class Button extends React.Component {
     render() {
       return (
         <div>
-            <button className='button'>Click me!</button>
+            <button className='center button' onClick={() => this.handleClick()}>Feeling bored?</button>
         </div>
       );
+    }
+
+    handleClick() {
+        console.log("click");
     }
   }
 
