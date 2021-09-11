@@ -30,41 +30,16 @@ class LeftPane extends React.Component {
 class MainPane extends React.Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-            bored: null
-        };
     }
 
     render() {
         return (
             <div>
-                <Button onClick={() => this.handleClick()}/>
+                
             </div>
         )
     }
-
-
 }
-
-/*class Button extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            bored: null
-        };
-    }
-
-    render() {
-        const { bored } = this.state;
-        return (
-            <button className='center button' onClick={props.onClick}>Feeling bored?</button>
-        )
-    }
-
-
-}*/
 
 function Button(props) {
     return (
@@ -74,61 +49,56 @@ function Button(props) {
     );
 }
 
-  class Content extends React.Component {
-        constructor(props) {
-            super(props)
+class Content extends React.Component {
+    constructor(props) {
+        super(props)
 
-            this.state = {
-                activity: null,
-                type: null,
-                participants: null,
-                price: null,
-                link: null,
-                accessibility: null,
-            }
+        this.state = {
+            activity: null,
+            type: null,
+            participants: null,
+            price: null,
+            link: null,
+            accessibility: null,
+        }
+    }
+
+    getItems() {
+        fetchAPI()
+        .then(results => results.json())
+        .then(results => this.setState({
+            activity: results.activity,
+            type: results.type,
+            participants: results.participants,
+            price: results.price,
+            link: results.link,
+            accessibility: results.accessibility,
+        })); 
+    }
+
+    translateNumber() {
+        if (this.state.price === 0) {
+            this.setState({
+                price: 'free'
+            })
         }
 
-      /*componentDidMount() {
-          this.getItems();
-      }*/
-
-      getItems() {
-        fetchAPI()
-            .then(results => results.json())
-            .then(results => this.setState({
-                activity: results.activity,
-                type: results.type,
-                participants: results.participants,
-                price: results.price,
-                link: results.link,
-                accessibility: results.accessibility,
-            })); 
-      }
-
-      translateNumber() {
-            if (this.state.price === 0) {
-                this.setState({
-                    price: 'free'
-                })
-            }
-
-            else if (this.state.price <= 0.5) {
+        else if (this.state.price <= 0.5) {
             this.setState({
                 price: 'cheap'
-                })
-            }   
+            })
+        }   
 
-            else if (this.state.price > 0.5) {
-                this.setState({
-                    price: 'expensive'
-                })
-            }
+        else if (this.state.price > 0.5) {
+            this.setState({
+                price: 'expensive'
+            })
         }
+    }
 
-      render() {
-          return ( 
-              <div className='text'>
-                {/*<button onClick={this.getItems}>Clickme</button>*/}
+    render() {
+        return ( 
+            <div className='text'>
                 <Button onClick={() => this.getItems()}/>
                 {this.state.activity} 
                 <p></p>
@@ -141,17 +111,17 @@ function Button(props) {
                 {this.state.link ? <a href={this.state.link} target="_blank" rel="noreferrer">Learn more!</a> : null}
                 <p></p>
                 {this.state.accessibility}
-              </div>
+            </div>
           );
-      }
-  }
+    }
+}
 
-  function fetchAPI() {
-      return fetch('http://www.boredapi.com/api/activity/');
-  }
+function fetchAPI() {
+    return fetch('http://www.boredapi.com/api/activity/');
+}
 
 
-  ReactDOM.render(
+ReactDOM.render(
     <Content />,
     document.getElementById('root')
-  );
+);
