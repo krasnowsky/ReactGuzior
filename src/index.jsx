@@ -84,7 +84,7 @@ class Content extends React.Component {
         return(
             <div className='center-text'>
                 <h1>Random Activity</h1>
-                {this.state.activity} 
+                <h2>{this.state.activity}</h2>
                 <p></p>
                 Type: {this.state.type}
                 <p></p>
