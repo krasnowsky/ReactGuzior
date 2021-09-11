@@ -35,7 +35,7 @@ class MainPane extends React.Component {
     render() {
         return (
             <div>
-                
+                <Content />
             </div>
         )
     }
@@ -47,6 +47,10 @@ function Button(props) {
             Feeling bored?
         </button>
     );
+}
+
+function fetchAPI() {
+    return fetch('http://www.boredapi.com/api/activity/');
 }
 
 class Content extends React.Component {
@@ -116,12 +120,8 @@ class Content extends React.Component {
     }
 }
 
-function fetchAPI() {
-    return fetch('http://www.boredapi.com/api/activity/');
-}
-
 
 ReactDOM.render(
-    <Content />,
+    <MainPane />,
     document.getElementById('root')
 );
