@@ -74,29 +74,42 @@ class Content extends React.Component {
             activity: results.activity,
             type: results.type,
             participants: results.participants,
-            price: results.price,
+            price: this.translatePrice(results.price),
             link: results.link,
             accessibility: results.accessibility,
         })); 
     }
 
-    translateNumber() {
-        if (this.state.price === 0) {
-            this.setState({
-                price: 'free'
-            })
+    renderInfo() {
+        return(
+            <div className='center-text'>
+                <h1>Random Activity</h1>
+                {this.state.activity} 
+                <p></p>
+                Type: {this.state.type}
+                <p></p>
+                Participants: {this.state.participants}
+                <p></p>
+                Price: {this.state.price}
+                <p></p>
+                {this.state.link ? <a href={this.state.link} target="_blank" rel="noreferrer">Learn more!</a> : <p>No link avaliable :/</p>}
+                <p></p>
+                Accesbility: {this.state.accessibility}
+            </div>
+        )
+    }
+
+    translatePrice(price) {
+        if (price === 0) {
+            return 'free'
         }
 
-        else if (this.state.price <= 0.5) {
-            this.setState({
-                price: 'cheap'
-            })
+        else if (price <= 0.5) {
+            return 'cheap'
         }   
 
-        else if (this.state.price > 0.5) {
-            this.setState({
-                price: 'expensive'
-            })
+        else if (price > 0.5) {
+            return 'expensive'
         }
     }
 
@@ -104,17 +117,7 @@ class Content extends React.Component {
         return ( 
             <div className='text'>
                 <Button onClick={() => this.getItems()}/>
-                {this.state.activity} 
-                <p></p>
-                {this.state.type}
-                <p></p>
-                {this.state.participants}
-                <p></p>
-                {this.state.price}
-                <p></p>
-                {this.state.link ? <a href={this.state.link} target="_blank" rel="noreferrer">Learn more!</a> : null}
-                <p></p>
-                {this.state.accessibility}
+                {this.renderInfo()}
             </div>
           );
     }
