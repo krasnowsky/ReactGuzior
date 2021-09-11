@@ -47,7 +47,7 @@ class MainPane extends React.Component {
 
 }
 
-class Button extends React.Component {
+/*class Button extends React.Component {
     constructor(props) {
         super(props)
 
@@ -56,54 +56,28 @@ class Button extends React.Component {
         };
     }
 
-    /*handleClick() {
-        console.log("fetching")
-        fetch('http://www.boredapi.com/api/activity/')
-            .then(response => response.json())
-            .then(data => this.setState({ bored: data.total }));
-        console.log(this.state.bored)
-        const activity = JSON.parse(this.state.bored);
-        console.log(activity.activity)
-    }*/
-
-    take() {
-        fetch('http://www.boredapi.com/api/activity/')
-            .then(response => response.json())
-            .then(data => this.setState({ bored: data.total }));
-        const { bored } = this.state;
-        console.log({bored})
-    }
-
     render() {
         const { bored } = this.state;
         return (
-            <div>
-            <div className='text'>Output: {bored}</div>
-            <button className='center button' onClick={() => this.take()}>Feeling bored?</button>
-            </div>
+            <button className='center button' onClick={props.onClick}>Feeling bored?</button>
         )
     }
 
 
+}*/
+
+function Button(props) {
+    return (
+        <button className='center button' onClick={props.onClick}>
+            Feeling bored?
+        </button>
+    );
 }
-
-/*class Button extends React.Component {
-    render() {
-      return (
-        <div>
-            <button className='center button' onClick={() => this.hide_image()}>Feeling bored?</button>
-        </div>
-      );
-    }
-
-    handleClick() {
-        console.log("click");
-    }
-  }*/
 
   class Content extends React.Component {
         constructor(props) {
             super(props)
+
             this.state = {
                 activity: null,
                 type: null,
@@ -114,12 +88,12 @@ class Button extends React.Component {
             }
         }
 
-      componentDidMount() {
+      /*componentDidMount() {
           this.getItems();
-      }
+      }*/
 
       getItems() {
-        fetch('http://www.boredapi.com/api/activity/')
+        fetchAPI()
             .then(results => results.json())
             .then(results => this.setState({
                 activity: results.activity,
@@ -128,9 +102,7 @@ class Button extends React.Component {
                 price: results.price,
                 link: results.link,
                 accessibility: results.accessibility,
-            }));  
-
-        
+            })); 
       }
 
       translateNumber() {
@@ -138,8 +110,8 @@ class Button extends React.Component {
                 this.setState({
                     price: 'free'
                 })
-            }  
-            
+            }
+
             else if (this.state.price <= 0.5) {
             this.setState({
                 price: 'cheap'
@@ -154,9 +126,10 @@ class Button extends React.Component {
         }
 
       render() {
-        this.translateNumber()
           return ( 
               <div className='text'>
+                {/*<button onClick={this.getItems}>Clickme</button>*/}
+                <Button onClick={() => this.getItems()}/>
                 {this.state.activity} 
                 <p></p>
                 {this.state.type}
@@ -168,10 +141,13 @@ class Button extends React.Component {
                 {this.state.link ? <a href={this.state.link} target="_blank" rel="noreferrer">Learn more!</a> : null}
                 <p></p>
                 {this.state.accessibility}
-
               </div>
           );
       }
+  }
+
+  function fetchAPI() {
+      return fetch('http://www.boredapi.com/api/activity/');
   }
 
 
