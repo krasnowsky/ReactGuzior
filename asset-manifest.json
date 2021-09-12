@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/ReactGuzior/static/css/main.8c3637bb.chunk.css",
+    "main.js": "/ReactGuzior/static/js/main.a040e68b.chunk.js",
+    "main.js.map": "/ReactGuzior/static/js/main.a040e68b.chunk.js.map",
+    "runtime-main.js": "/ReactGuzior/static/js/runtime-main.5f806dcf.js",
+    "runtime-main.js.map": "/ReactGuzior/static/js/runtime-main.5f806dcf.js.map",
+    "static/js/2.c8761a34.chunk.js": "/ReactGuzior/static/js/2.c8761a34.chunk.js",
+    "static/js/2.c8761a34.chunk.js.map": "/ReactGuzior/static/js/2.c8761a34.chunk.js.map",
+    "index.html": "/ReactGuzior/index.html",
+    "static/css/main.8c3637bb.chunk.css.map": "/ReactGuzior/static/css/main.8c3637bb.chunk.css.map",
+    "static/js/2.c8761a34.chunk.js.LICENSE.txt": "/ReactGuzior/static/js/2.c8761a34.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5f806dcf.js",
+    "static/js/2.c8761a34.chunk.js",
+    "static/css/main.8c3637bb.chunk.css",
+    "static/js/main.a040e68b.chunk.js"
+  ]
+}
